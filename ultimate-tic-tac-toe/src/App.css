@@ -1,0 +1,20 @@
+body {
+  text-align: center;
+  background-color: black;
+}
+
+.gameCell{
+  background-color: white;
+}
+
+.gameGrid{
+  display: grid;
+  
+  grid-template-columns: 25vw 25vw 25vw;
+  grid-template-rows: 25vw 25vw 25vw; 
+  grid-column-gap: 2vw;
+  grid-row-gap: 2vw;
+ 
+  margin:10px
+
+}
