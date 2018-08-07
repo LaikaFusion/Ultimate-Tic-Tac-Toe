@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import GameCell from "./components/GameCell";
-import Modal from "react-modal/lib/components/Modal";
+import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
