@@ -71,8 +71,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <div className='game'>
+        <div className='title'>Ultimate Tic Tac Toe</div>
+        <div className='buttonRow'>
+          <button>How to Play!</button>
+          <button>Credits </button>
+        </div>
         <div className='gameGrid'>
         {this.gameGridMaker()}
+        </div>
         </div>
       </div>
     );

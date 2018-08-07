@@ -1,11 +1,12 @@
-.gameCell {
-  background-color: white;
-  display: grid;
+@import url('https://fonts.googleapis.com/css?family=Audiowide');
 
-  grid-template-columns: 7vw 7vw 7vw;
-  grid-template-rows: 7vw 7vw 7vw;
-  grid-column-gap: 0.5vw;
-  grid-row-gap: 0.5vw;
+.gameCell {
+  background-color: #3C7679;
+  display: grid;
+  grid-template-columns: 4rem 4rem 4rem;
+  grid-template-rows: 4rem 4rem 4rem;
+  grid-column-gap: .5rem;
+  grid-row-gap:.5rem;
   justify-content: center;
   align-content: center;
   height: 100%;
@@ -20,22 +21,23 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  font-size: 2rem;
 }
 .gameGrid {
   display: grid;
 
-  grid-template-columns: 25vw 25vw 25vw;
-  grid-template-rows: 25vw 25vw 25vw;
-  grid-column-gap: 2vw;
-  grid-row-gap: 2vw;
+  grid-template-columns: 14rem 14rem 14rem;
+  grid-template-rows: 14rem 14rem 14rem;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
 
   margin: 10px;
 }
 .cellCover {
   position: absolute;
   box-sizing: border-box;
-  width: 25vw;
-  height: 25vw;
+  width: 14rem;
+  height: 14rem;
   z-index: 3;
   background-color: white;
   color: black;
@@ -45,13 +47,51 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24vw;
+  font-size: 14rem;
   cursor: default;
 }
 .active {
-  background-color: green;
+  background-color: #75A982;
 }
 .inactive{
   pointer-events: none;
 
+}
+.App{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.title{
+  font-family: 'Audiowide', cursive;
+  background-color:black;
+ color :white;
+  font-size: 4rem;
+  margin-top: 1rem;
+  padding: 20px;
+  border: .5rem #75A982 solid;
+
+}
+
+.buttonRow{
+display:flex;
+width:100%;
+justify-content: space-around;
+margin: .9rem;
+
+}
+button{
+  background-color: black;
+  color:white;
+  border: .5rem #75A982 solid;
+  font-size: 30px;
+}
+.game{
+  
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  
 }
