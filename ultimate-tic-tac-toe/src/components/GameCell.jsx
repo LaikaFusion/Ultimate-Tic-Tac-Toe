@@ -6,7 +6,6 @@ class gameCell extends Component {
     this.state = {
       ID: '',
       gameBoard: [],
-      currentTurn: 'X',
       winner: ''
       
     }
@@ -38,18 +37,14 @@ class gameCell extends Component {
       }
     });
   }
-  switchTurn(){
-    if (this.state.currentTurn === 'X') {
-      this.setState({currentTurn: 'O'})
-    } else {
-      this.setState({currentTurn: 'X'})
-    }
-  }
+  
   fillSquare = (event)=>{
         if( event.target.textContent !=='' || event.target.textContent !=='X' || event.target.textContent !=='O'){
       let currentBoard = this.state.gameBoard.slice();
-      currentBoard[event.target.id] = this.state.currentTurn;   
-      this.switchTurn();
+      currentBoard[event.target.id] = this.props.currentTurn;   
+      this.props.changeactivemethod(parseInt(event.target.id));
+
+      this.props.switchturn();
       this.setState({gameBoard:currentBoard}, ()=>{
         this.calculateWinner();
       })
@@ -66,7 +61,7 @@ class gameCell extends Component {
   
   render() {
     return (
-      <div className='gameCell'>
+      <div className={this.props.active ? 'gameCell active':'gameCell inactive'}>
       <div className={ this.state.winner ?'cellCover displaySomething':'cellCover'}>{this.state.winner}</div>
         {this.state.gameBoard.map((element,index) => {
           return <div onClick={(element)?()=>{}:this.fillSquare} id={ index.toString() } key={this.state.ID.toString() + index.toString() } className='subGameCell'> {element} </div>
