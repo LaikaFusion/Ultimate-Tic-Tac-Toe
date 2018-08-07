@@ -42,7 +42,7 @@ class gameCell extends Component {
         if( event.target.textContent !=='' || event.target.textContent !=='X' || event.target.textContent !=='O'){
       let currentBoard = this.state.gameBoard.slice();
       currentBoard[event.target.id] = this.props.currentTurn;   
-      this.props.changeactivemethod(parseInt(event.target.id));
+      this.props.changeactivemethod(parseInt(event.target.id, 10));
 
       this.props.switchturn();
       this.setState({gameBoard:currentBoard}, ()=>{

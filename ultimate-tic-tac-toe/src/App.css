@@ -68,10 +68,12 @@
   background-color:black;
  color :white;
   font-size: 4rem;
+  
+}
+.titleBorder{
   margin-top: 1rem;
   padding: 20px;
   border: .5rem #75A982 solid;
-
 }
 
 .buttonRow{
@@ -94,4 +96,61 @@ button{
     flex-direction: column;
     justify-content: center;
   
+}
+.closeButtonRow{
+  display:flex;
+
+}
+.closeButton{
+  font-size: 20px;
+}
+
+.instructions{
+  color: white;
+  font-size: 20px
+}
+
+.Modal{
+  
+    background: rgba(0, 0, 0, 1);
+    border: .5rem #75A982 solid;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    max-Width:30rem;
+    margin-Left: auto;  
+    margin-Right: auto;
+    
+    overflow: auto;
+   font-family: sans-serif;
+    border-Radius: 4px;
+    outline: none;
+    padding: 20px;
+  
+}
+.Overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-Color: rgba(255, 255, 255, 0.75);
+}
+.ReactModal__Overlay { /*fix for modal z-index*/
+  z-index: 1000;
+}
+
+a{
+  color: white;
+  
+}
+
+.creditsLine{
+  color:white;
+  font-size: 30px;
+  margin-top: 20px;
+}
+.name{
+  font-weight: bold;
 }
