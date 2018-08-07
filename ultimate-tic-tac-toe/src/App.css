@@ -1,12 +1,29 @@
-body {
-  text-align: center;
-  background-color: black;
-}
 
 .gameCell{
   background-color: white;
-}
+  display: grid;
 
+  grid-template-columns: 7vw 7vw 7vw;
+  grid-template-rows: 7vw 7vw 7vw; 
+  grid-column-gap: .5vw;
+  grid-row-gap: .5vw;
+justify-content: center;
+  align-content: center;
+height: 100%;
+width: 100%;
+cursor: default;
+
+}
+.subGameCell{
+  background: black;
+  color:white;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display:flex;
+
+}
 .gameGrid{
   display: grid;
   
@@ -16,5 +33,23 @@ body {
   grid-row-gap: 2vw;
  
   margin:10px
+
+}
+.cellCover{
+  position: absolute;
+  box-sizing:border-box;
+  width: 25vw;
+  height:25vw;
+  z-index: 3;
+  background-color: white;
+  color:black;
+  display: none;
+}
+.displaySomething{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24vw;
+  cursor: default;
 
 }

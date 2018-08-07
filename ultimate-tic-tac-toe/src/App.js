@@ -6,28 +6,26 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state ={
-      gameCells:['','','','','','','','','']
+      gameCells:['','','','','','','','',''],
+      initial: true,
     }
   }
-  
   gameGridMaker = () =>{
     return this.state.gameCells.map((element,index) => {
         return <GameCell winmethod={this.gameCellWin} gameID={index} key={index}  />
     });
   }
-  gameCellWin = (ID,outcome) =>{
-    let gameCellsToMod = this.state.gameCells.slice();
-    gameCellsToMod.map((element,index) => {
-        if(ID === index){
-          return element=outcome;
-        }
-        else{
-          return element;
-        }
-    });
-
-    this.setState({gameCells: gameCellsToMod})
+  gameCellWin = () =>{
+    let gameStates = JSON.parse(localStorage.getItem('gameStates').slice());
+    this.setState({gameCells : gameStates});
   }
+  componentDidMount() {
+    if(this.state.initial === true){
+      localStorage.setItem('gameStates', (JSON.stringify(Array(9).fill(null))));
+      this.setState({initial:false});
+    }
+  }
+  
   render() {
     return (
       <div className="App">
