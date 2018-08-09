@@ -5,7 +5,6 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,7 @@ class App extends Component {
       showModalInstructions: false,
       showModalCredits: false,
       showModalWinner: false,
-      winner:''
+      winner: ""
     };
   }
   gameGridMaker = () => {
@@ -26,7 +25,9 @@ class App extends Component {
         <GameCell
           switchturn={this.switchTurn}
           active={
-            this.state.currentActive === index || this.state.currentActive === 9 ? true : false
+            this.state.currentActive === index || this.state.currentActive === 9
+              ? true
+              : false
           }
           changeactivemethod={this.changeActiveMethod}
           winmethod={this.gameCellWin}
@@ -56,8 +57,8 @@ class App extends Component {
       [2, 4, 6]
     ];
     if (game.indexOf(null) === -1) {
-      this.setState({winner : 'D'});
-      this.toggleOverlay('Instructions');
+      this.setState({ winner: "D" });
+      this.toggleOverlay("Instructions");
     }
     lines.forEach(element => {
       if (
@@ -65,8 +66,8 @@ class App extends Component {
         game[element[0]] === game[element[2]] &&
         game[element[0]] !== null
       ) {
-        this.setState({winner : game[element[0]]})
-        this.toggleOverlay('Instructions');
+        this.setState({ winner: game[element[0]] });
+        this.toggleOverlay("Instructions");
       }
     });
   };
@@ -84,19 +85,18 @@ class App extends Component {
       this.setState({ currentTurn: "X" });
     }
   };
-  toggleOverlay = (which) => {
-    const modalName= 'showModal' + which;
+  toggleOverlay = which => {
+    const modalName = "showModal" + which;
     if (this.state[modalName]) {
       this.setState({ [modalName]: false });
     } else {
       this.setState({ [modalName]: true });
     }
   };
-  reset = ()=>{
-    this.setState({initial: true})
+  reset = () => {
+    this.setState({ initial: true });
     window.location.reload();
-
-  }
+  };
   componentDidMount = () => {
     if (this.state.initial === true) {
       localStorage.setItem("gameStates", JSON.stringify(Array(9).fill(null)));
@@ -109,8 +109,8 @@ class App extends Component {
       <div className="App">
         <Modal
           onRequestClose={() => {
-            this.toggleOverlay('Instructions');
-                    }}
+            this.toggleOverlay("Instructions");
+          }}
           className="Modal"
           isOpen={this.state.showModalInstructions}
         >
@@ -118,7 +118,7 @@ class App extends Component {
             <button
               className="closeButton"
               onClick={() => {
-                this.toggleOverlay('Instructions');
+                this.toggleOverlay("Instructions");
               }}
             >
               X
@@ -156,7 +156,8 @@ class App extends Component {
             </p>
             <p>
               {" "}
-              -<a href="https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe#Rules">
+              -
+              <a href="https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe#Rules">
                 WIKIPEDIA
               </a>
             </p>
@@ -173,7 +174,7 @@ class App extends Component {
             <button
               className="closeButton"
               onClick={() => {
-                this.toggleOverlay('Credits');
+                this.toggleOverlay("Credits");
               }}
             >
               X
@@ -182,14 +183,17 @@ class App extends Component {
           <div className="titleRow">
             <span className="title">Credits:</span>
           </div>
-          <div className='credits'>
-          <div className='creditsLine'>
-          This implementation of Ultimate Tic Tac Toe was written by: <br/><span className='name'>Andrew McLaughlin</span>
-          </div>
-          
-          <div className='creditsLine'>
-          <a href='https://github.com/LaikaFusion/Ultimate-Tic-Tac-Toe'>GitHub</a>
-          </div>
+          <div className="credits">
+            <div className="creditsLine">
+              This implementation of Ultimate Tic Tac Toe was written by: <br />
+              <span className="name">Andrew McLaughlin</span>
+            </div>
+
+            <div className="creditsLine">
+              <a href="https://github.com/LaikaFusion/Ultimate-Tic-Tac-Toe">
+                GitHub
+              </a>
+            </div>
           </div>
         </Modal>
         <Modal
@@ -203,34 +207,45 @@ class App extends Component {
             <button
               className="closeButton"
               onClick={() => {
-                this.toggleOverlay('Winner');
+                this.toggleOverlay("Winner");
               }}
             >
               X
             </button>
           </div>
           <div className="titleRow">
-            <span className="title">{this.state.winner==='D'? 'Draw' :'Winner ' + this.state.winner  }</span>
+            <span className="title">
+              {this.state.winner === "D"
+                ? "Draw"
+                : "Winner " + this.state.winner}
+            </span>
           </div>
           <div>
             <button onClick={this.reset}> RESET</button>
-            </div>
+          </div>
         </Modal>
         <div className="game">
           <div className="title titleBorder">Ultimate Tic Tac Toe</div>
           <div className="buttonRow">
             <button
+              className="smallButton"
               onClick={() => {
-                this.toggleOverlay('Instructions');
+                this.toggleOverlay("Instructions");
               }}
             >
               How to Play!
             </button>
-            <button  onClick={() => {
-                this.toggleOverlay('Credits');
-              }}>Credits </button>
+            <button
+              className="smallButton"
+              onClick={() => {
+                this.toggleOverlay("Credits");
+              }}
+            >
+              Credits{" "}
+            </button>
           </div>
           <div className="gameGrid">{this.gameGridMaker()}</div>
+          <div className="smallButton">Turn: {this.state.currentTurn}</div>
         </div>
       </div>
     );
