@@ -50,7 +50,6 @@ class gameCell extends Component {
       let currentBoard = this.state.gameBoard.slice();
       currentBoard[event.target.id] = this.props.currentTurn;
       this.props.changeactivemethod(parseInt(event.target.id, 10));
-
       this.props.switchturn();
       this.setState({ gameBoard: currentBoard }, () => {
         this.calculateWinner();
@@ -61,6 +60,7 @@ class gameCell extends Component {
     let gameStates = JSON.parse(localStorage.getItem("gameStates").slice());
     gameStates[this.state.ID] = toWrite;
     window.localStorage.setItem("gameStates", JSON.stringify(gameStates));
+    this.props.changeactivemethod(9);
     this.props.winmethod();
     this.setState({ winner: toWrite });
   }
